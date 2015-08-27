@@ -1,0 +1,21 @@
+= Bespoke.js Emulating Shower
+
+A http://markdalgleish.com/projects/bespoke.js[Bespoke.js] presentation that emulates the example presentation for http://shwr.me[Shower].
+
+== View slides locally
+
+First, ensure you have the following installed:
+
+. http://nodejs.org[Node.js]
+. http://bower.io[Bower]
+
+ $ npm install -g bower
+
+. http://gulpjs.com[Gulp]
+
+ $ npm install -g gulp
+
+Then, install dependencies and run the preview server:
+
+ $ npm install && bower install
+ $ gulp serve
