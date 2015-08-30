@@ -80,7 +80,8 @@ html
   p, ul, ol
     margin: 0 0 2em 0
   p, li, figcaption
-    // reset line-height to match 2x font-size; it's not inheriting properly when using zoom-based scaling; must be em
+    // reset line-height to match 2x font-size; not inheriting properly when using zoom-based scaling; must be em
+    // ...or perhaps value is just shown wrong in the inspector
     line-height: 2em
     //text-rendering: optimizeLegibility
     //font-feature-settings: "kern" 1
@@ -268,11 +269,11 @@ html
   transition: none
 
 .bespoke-title
-  padding: 6.15% 6.5% 0.35% 6.5%
+  padding: 275px 300px 0
   h1
     font-family: 'PT Sans Narrow', sans-serif
-    font-size: 2em
+    font-size: 6.5em
     line-height: 1em
     color: #3c3d40
-    text-shadow: 0 1px 1px #8d8e90
+    text-shadow: 0 0.02em 0.02em #8d8e90
     text-align: left
