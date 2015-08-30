@@ -18,7 +18,7 @@ bespoke.from('.deck', [
   backdrop(),
   // NOTE zoom-based scaling produces slightly different results scale(),
   scale('transform'),
-  overview({ margin: 100, autostart: true, title: true, numbers: true }),
+  overview({ margin: 300, autostart: true, title: true, numbers: true }),
   bullets('.bullet'),
   hash(),
   forms()
