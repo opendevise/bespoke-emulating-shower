@@ -7,7 +7,8 @@ var bespoke = require('bespoke'),
   hash = require('bespoke-hash'),
   nav = require('bespoke-nav'),
   overview = require('bespoke-overview'),
-  scale = require('bespoke-scale');
+  scale = require('bespoke-scale'),
+  title = require('bespoke-title');
 
 bespoke.from('.deck', [
   classes(),
@@ -18,6 +19,7 @@ bespoke.from('.deck', [
   scale('transform'),
   overview({ margin: 300, autostart: true, title: true, numbers: true }),
   bullets('.bullet'),
+  title(),
   hash(),
   forms()
 ]);

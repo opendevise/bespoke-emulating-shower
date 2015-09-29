@@ -13,6 +13,7 @@
     "bespoke-nav": "^1.0.1",
     "bespoke-overview": "^1.0.3",
     "bespoke-scale": "^1.0.1",
+    "bespoke-title": "^1.0.0",
     "debowerify": "^0.7.1",
     "del": "^1.1.1",
     "gh-pages": "^0.2.0",
