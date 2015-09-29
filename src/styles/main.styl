@@ -241,6 +241,11 @@ html
     outline: none
     border-radius: 4px
 
+  // Don't show visible scrollbar in IE 10+ or WebKit
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar
+    width: 0
+
 .bespoke-overview-counter .bespoke-slide::after
   top: 100%
   left: 10%
