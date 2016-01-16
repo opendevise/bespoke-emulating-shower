@@ -3,36 +3,51 @@
 var pkg = require('./package.json'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
-  plumber = require('gulp-plumber'),
-  rename = require('gulp-rename'),
-  connect = require('gulp-connect'),
-  browserify = require('gulp-browserify'),
-  uglify = require('gulp-uglify'),
-  jade = require('gulp-jade'),
-  stylus = require('gulp-stylus'),
   autoprefixer = require('gulp-autoprefixer'),
+  browserify = require('gulp-browserify'),
+  chmod = require('gulp-chmod'),
+  connect = require('gulp-connect'),
   csso = require('gulp-csso'),
   del = require('del'),
-  through = require('through'),
+  exec = require('gulp-exec'),
   ghpages = require('gh-pages'),
+  jade = require('gulp-jade'),
   path = require('path'),
-  isDist = process.argv.indexOf('serve') === -1;
+  plumber = require('gulp-plumber'), // plumber prevents pipe breaking caused by errors thrown by plugins
+  rename = require('gulp-rename'),
+  stylus = require('gulp-stylus'),
+  through = require('through'),
+  uglify = require('gulp-uglify'),
+  isDist = process.argv.indexOf('deploy') >= 0;
 
 gulp.task('js', ['clean:js'], function() {
   return gulp.src('src/scripts/main.js')
     .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
-    .pipe(isDist ? uglify() : through())
+    .pipe(browserify({ transform: ['debowerify'] }))
+    //.pipe(isDist ? uglify() : through())
+    .pipe(uglify())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
     .pipe(connect.reload());
 });
 
-gulp.task('html', ['clean:html'], function() {
+gulp.task('jade-html', ['clean:jade-html'], function() {
   return gulp.src('src/index.jade')
     .pipe(isDist ? through() : plumber())
     .pipe(jade({ pretty: true }))
+    .pipe(rename('index-jade.html'))
+    .pipe(gulp.dest('dist'))
+    .pipe(connect.reload());
+});
+
+gulp.task('asciidoc-html', ['clean:asciidoc-html'], function(done) {
+  return gulp.src('')
+    .pipe(isDist ? through() : plumber())
+    // using stdin here would cause loss of context
+    .pipe(exec('asciidoctor-bespoke -o - src/index.adoc', { pipeStdout: true }))
+    .pipe(exec.reporter({ stdout: false }))
     .pipe(rename('index.html'))
+    .pipe(chmod(644))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
@@ -43,7 +58,7 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(stylus({
       // Allow CSS to be imported from node_modules and bower_components
       'include css': true,
-      'paths': ['./node_modules', './bower_components']
+      paths: ['./node_modules', './bower_components']
     }))
     .pipe(autoprefixer('last 2 versions', { map: false }))
     .pipe(isDist ? csso() : through())
@@ -62,7 +77,11 @@ gulp.task('clean', function(done) {
   del('dist', done);
 });
 
-gulp.task('clean:html', function(done) {
+gulp.task('clean:jade-html', function(done) {
+  del('dist/index-jade.html', done);
+});
+
+gulp.task('clean:asciidoc-html', function(done) {
   del('dist/index.html', done);
 });
 
@@ -90,7 +109,8 @@ gulp.task('open', ['connect'], function (done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.jade', ['html']);
+  gulp.watch('src/**/*.adoc', ['asciidoc-html']);
+  gulp.watch('src/**/*.jade', ['jade-html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
   gulp.watch([
@@ -103,7 +123,7 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('build', ['js', 'html', 'css', 'images']);
+gulp.task('build', ['js', 'asciidoc-html', 'jade-html', 'css', 'images']);
 
 gulp.task('serve', ['open', 'watch']);
 

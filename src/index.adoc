@@ -1,0 +1,79 @@
+= Shower Presentation Engine
+:imagesdir: images
+:!sectids:
+
+image::cover.jpg[Hands typing on typewriter on park bench,1024,640,role=cover canvas]
+
+As emulated by http://markdalgleish.com/projects/bespoke.js[Bespoke.js]
+
+== Shower Key Features
+. Built on HTML, CSS and vanilla JavaScript
+. All modern browsers are supported
+. Slide themes are separated from engine
+. Fully keyboard accessible
+. Printable to PDF
+
+[.note]
+Shower ['ʃəuə] noun.
+A person or thing that shows.
+
+== Plain Text on Your Slides
+Lorem ipsum dolor sit amet, consectetur <<4,adipisicing>> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, _quis nostrud_ exercitation ullamco laboris *nisi ut aliquip* ex ea commodo consequat.
+Duis aute irure _dolor_ in reprehenderit in voluptate velit esse cillum *dolore* eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in `<culpa>` qui officia deserunt mollit anim id est laborum.
+
+== All Kinds of Lists
+. Simple lists are marked with bullets
+. Ordered lists begin with a number
+. You can even nest lists one inside another
+  - Or mix their types
+  - But do not go too far
+  - Otherwise audience will be bored
+. Look, seven rows exactly!
+
+== Serious Citations
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia."
+-- Marcus Tullius Cicero
+
+== Code Samples
+[listing,subs=+quotes]
+<!DOCTYPE html>
+<html lang="en">
+#<head># [.comment]#<!--Comment-->#
+    <title>Shower</title>
+    <meta charset="[.important]#UTF-8#">
+    <link rel="stylesheet" href="screen.css">
+#</head>#
+
+== Even Tables
+[%header%autowidth,frame=bottom,grid=rows]
+|===
+ | Locavore     | Umami       | Helvetica | Vegan
+h| Fingerstache | Kale        | Chips     | Keytar
+h| Sriracha     | Gluten-free | Ennui     | Keffiyeh
+h| Thundercats  | Jean        | Shorts    | Biodiesel
+h| Terry        | Richardson  | Swag      | Blog
+|===
+
+It's good to have information organized.
+
+== Pictures
+image::picture.jpg[Close-up of typewriter on park bench,1024,640,role=cover canvas]
+
+[.shout]
+== You can even shout this way
+
+== Inner Navigation
+[build=items]
+. Lets you reveal list items one by one
+. To keep some key points
+. In secret from audience
+. But it will work only once
+. Nobody wants to see the same joke twice 
+
+[.shout%fit]
+== image:shower-logo.svg[Shower logo,72,72]{nbsp}link:https://github.com/opendevise/bespoke-emulating-shower[See more on GitHub]

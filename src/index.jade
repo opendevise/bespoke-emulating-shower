@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -9,116 +9,103 @@ html
 
   body
     article.deck
-      section.title.cover(style='background-image: url(images/cover.jpg); background-size: cover', data-title='')
-        .content
-          h2 Shower Presentation Engine
-          p As emulated by #[a(href='http://markdalgleish.com/projects/bespoke.js') Bespoke.js]
+      section.title.image(style='background-image: url(images/cover.jpg); background-size: cover', data-title='')
+        h1 Shower Presentation Engine
+        p As emulated by #[a(href='http://markdalgleish.com/projects/bespoke.js') Bespoke.js]
 
       section
-        .content
-          h2 Shower Key Features
-          ol
-            li Built on HTML, CSS and vanilla JavaScript
-            li All modern browsers are supported
-            li Slide themes are separated from engine
-            li Fully keyboard accessible
-            li Printable to PDF
-          p.note Shower ['ʃəuə] noun. A person or thing that shows.
+        h2 Shower Key Features
+        ol
+          li Built on HTML, CSS and vanilla JavaScript
+          li All modern browsers are supported
+          li Slide themes are separated from engine
+          li Fully keyboard accessible
+          li Printable to PDF
+        p.note Shower ['ʃəuə] noun. A person or thing that shows.
 
       section
-        .content
-          h2 Plain Text on Your Slides
-          p Lorem ipsum dolor sit amet, consectetur #[a(href='#4') adipisicing] elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, #[em quis nostrud] exercitation ullamco laboris #[strong nisi ut aliquip] ex ea commodo consequat. Duis aute irure #[em dolor] in reprehenderit in voluptate velit esse cillum #[strong dolore] eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in #[code &lt;culpa&gt;] qui officia deserunt mollit anim id est laborum.
+        h2 Plain Text on Your Slides
+        p Lorem ipsum dolor sit amet, consectetur #[a(href='#4') adipisicing] elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, #[em quis nostrud] exercitation ullamco laboris #[strong nisi ut aliquip] ex ea commodo consequat. Duis aute irure #[em dolor] in reprehenderit in voluptate velit esse cillum #[strong dolore] eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in #[code &lt;culpa&gt;] qui officia deserunt mollit anim id est laborum.
 
       section
-        .content
-          h2 All Kind of Lists
-          ol
-            li Simple lists are marked with bullets
-            li Ordered lists begin with a number
-            li
-              |You can even nest lists one inside another
-              ul
-                li Or mix their types
-                li But do not go too far
-                li Otherwise audience will be bored
-            li Look, seven rows exactly!
+        h2 All Kinds of Lists
+        ol
+          li Simple lists are marked with bullets
+          li Ordered lists begin with a number
+          li
+            |You can even nest lists one inside another
+            ul
+              li Or mix their types
+              li But do not go too far
+              li Otherwise audience will be bored
+          li Look, seven rows exactly!
 
       section
-        .content
-          h2 Serious Citations
-          figure
-            blockquote
-              p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
-
-            figcaption Marcus Tullius Cicero
+        h2 Serious Citations
+        figure.quote
+          blockquote: p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
+          figcaption Marcus Tullius Cicero
 
       section
-        .content
-          h2 Code Samples
-          pre
-            code. &lt;!DOCTYPE html&gt;
-            code. &lt;html lang="en"&gt;
-            code. <mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark>
-            code.     &lt;title&gt;Shower&lt;/title&gt;
-            code.     &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;
-            code.     &lt;link rel="stylesheet" href="screen.css"&gt;
-            code. <mark>&lt;/head&gt;</mark>
+        h2 Code Samples
+        pre
+          code. &lt;!DOCTYPE html&gt;
+          code. &lt;html lang="en"&gt;
+          code. <mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark>
+          code.     &lt;title&gt;Shower&lt;/title&gt;
+          code.     &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;
+          code.     &lt;link rel="stylesheet" href="screen.css"&gt;
+          code. <mark>&lt;/head&gt;</mark>
 
       section
-        .content
-          h2 Even Tables
-          table
-            tr
-              th Locavore
-              th Umami
-              th Helvetica
-              th Vegan
-            tr
-              th Fingerstache
-              td Kale
-              td Chips
-              td Keytar
-            tr
-              th Sriracha
-              td Gluten-free
-              td Ennui
-              td Keffiyeh
-            tr
-              th Thundercats
-              td Jean
-              td Shorts
-              td Biodiesel
-            tr
-              th Terry
-              td Richardson
-              td Swag
-              td Blog
-          p It's good to have information organized.
+        h2 Even Tables
+        table
+          tr
+            th Locavore
+            th Umami
+            th Helvetica
+            th Vegan
+          tr
+            th Fingerstache
+            td Kale
+            td Chips
+            td Keytar
+          tr
+            th Sriracha
+            td Gluten-free
+            td Ennui
+            td Keffiyeh
+          tr
+            th Thundercats
+            td Jean
+            td Shorts
+            td Biodiesel
+          tr
+            th Terry
+            td Richardson
+            td Swag
+            td Blog
+        p It's good to have information organized.
 
-      section.cover(style='background-image: url(images/picture.jpg); background-size: cover')
-        .content
-          h2 Pictures
+      section.image(style='background-image: url(images/picture.jpg); background-size: cover')
+        h2 Pictures
       
       section.shout
-        .content
-          h2 You can even shout this way
+        h2 You can even shout this way
 
       section
-        .content
-          h2 Inner Navigation
-          ol
-            li.bullet Lets you reveal list items one by one
-            li.bullet To keep some key points
-            li.bullet In secret from audience
-            li.bullet But it will work only once
-            li.bullet Nobody wants to see the same joke twice 
+        h2 Inner Navigation
+        ol
+          li.build Lets you reveal list items one by one
+          li.build To keep some key points
+          li.build In secret from audience
+          li.build But it will work only once
+          li.build Nobody wants to see the same joke twice 
 
       section.shout
-        .content
-          h2(style='font-size: 4em; margin: 0 -120px')
-            img(src='images/shower-logo.svg' style='width: 0.72em; height: 0.72em')
-            |&nbsp;
-            a(href='https://github.com/opendevise/bespoke-emulating-shower') See more on GitHub
+        h2.fit
+          img(src='images/shower-logo.svg' alt='Shower logo' width='72' height='72')
+          |&nbsp;
+          a(href='https://github.com/opendevise/bespoke-emulating-shower') See more on GitHub
 
     script(src='build/build.js')

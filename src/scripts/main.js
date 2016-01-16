@@ -1,8 +1,7 @@
 var bespoke = require('bespoke'),
-  backdrop = require('bespoke-backdrop'),
   bullets = require('bespoke-bullets'),
   classes = require('bespoke-classes'),
-  forms = require('bespoke-forms'),
+  //forms = require('bespoke-forms'),
   fullscreen = require('bespoke-fullscreen'),
   hash = require('bespoke-hash'),
   nav = require('bespoke-nav'),
@@ -14,14 +13,12 @@ bespoke.from('.deck', [
   classes(),
   nav(),
   fullscreen(),
-  backdrop(),
-  // NOTE zoom-based scaling produces slightly different results than scale transform,
+  // NOTE zoom-based scaling produces slightly different results than scale transform
   scale('transform'),
   overview({ margin: 300, autostart: true, title: true, numbers: true }),
-  bullets('.bullet'),
+  bullets('.build, .build-items > *:not(.build-items)'),
   title(),
-  hash(),
-  forms()
+  // enable forms() if you have form elements in your slides
+  //forms(),
+  hash()
 ]);
-
-require('prism');
