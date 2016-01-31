@@ -56,11 +56,10 @@ gulp.task('css', ['clean:css'], function() {
   return gulp.src('src/styles/main.styl')
     .pipe(isDist ? through() : plumber())
     .pipe(stylus({
-      // Allow CSS to be imported from node_modules and bower_components
-      'include css': true,
+      'include css': true, // Allow CSS to be imported from node_modules
       paths: ['./node_modules', './bower_components']
     }))
-    .pipe(autoprefixer('last 2 versions', { map: false }))
+    .pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
     .pipe(isDist ? csso() : through())
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
