@@ -118,7 +118,7 @@ gulp.task('watch', function() {
   ], ['js']);
 });
 
-gulp.task('deploy', ['build'], function(done) {
+gulp.task('deploy', ['clean', 'build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
