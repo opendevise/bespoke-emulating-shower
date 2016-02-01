@@ -1,6 +1,7 @@
 var bespoke = require('bespoke'),
   bullets = require('bespoke-bullets'),
   classes = require('bespoke-classes'),
+  //cursor = require('bespoke-cursor'),
   //forms = require('bespoke-forms'),
   fullscreen = require('bespoke-fullscreen'),
   hash = require('bespoke-hash'),
@@ -20,5 +21,7 @@ bespoke.from('.deck', [
   title(),
   // enable forms() if you have form elements in your slides
   //forms(),
+  // enable cursor() to automatically hide the cursor when presenting
+  //cursor(),
   hash()
 ]);
