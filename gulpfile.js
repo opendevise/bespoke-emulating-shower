@@ -17,6 +17,7 @@ var pkg = require('./package.json'),
   rename = require('gulp-rename'),
   stylus = require('gulp-stylus'),
   through = require('through'),
+  tidy = require('tidy-html5').tidy_html5,
   uglify = require('gulp-uglify'),
   isDist = process.argv.indexOf('deploy') >= 0;
 
@@ -46,6 +47,30 @@ gulp.task('asciidoc-html', ['clean:asciidoc-html'], function(done) {
     // using stdin here would cause loss of context
     .pipe(exec('asciidoctor-bespoke -o - src/index.adoc', { pipeStdout: true }))
     .pipe(exec.reporter({ stdout: false }))
+    .pipe(through(function(file) {
+      var html = file.contents.toString();
+      // NOTE based on tidy 4.9.26
+      html = tidy(html, {
+        'coerce-endtags': false,
+        'drop-empty-elements': false,
+        'fix-uri': false,
+        'indent': false,
+        'newline': 'LF',
+        'preserve-entities': true,
+        'quiet': true,
+        'tidy-mark': false,
+        'wrap': 0
+      });
+      html = html
+        // strip extra newlines inside <pre> tags (fixed in 5.1)
+        .replace(new RegExp('<pre([^>]*)>\\n([\\s\\S]*?)\\n</pre>', 'g'), '<pre$1>$2</pre>\n')
+        // strip extra endline after <script> start tag
+        //.replace(new RegExp('>\\n</script>', 'g'), '></script>')
+        // add endine after script tags
+        .replace(new RegExp('</script> *<', 'g'), '</script>\n<');
+      file.contents = new Buffer(html);
+      this.push(file);
+    }))
     .pipe(rename('index.html'))
     .pipe(chmod(644))
     .pipe(gulp.dest('dist'))
