@@ -58,6 +58,7 @@ gulp.task('asciidoc-html', ['clean:asciidoc-html'], function(done) {
         'newline': 'LF',
         'preserve-entities': true,
         'quiet': true,
+        'show-warnings': false, // otherwise tidy will warn about role attributes
         'tidy-mark': false,
         'wrap': 0
       });
