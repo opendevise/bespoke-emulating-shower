@@ -5,6 +5,7 @@ var pkg = require('./package.json'),
   browserify = require('browserify'),
   buffer = require('vinyl-buffer'),
   chmod = require('gulp-chmod'),
+  closureCompiler = require('google-closure-compiler').gulp(),
   connect = require('gulp-connect'),
   csso = require('gulp-csso'),
   del = require('del'),
@@ -27,10 +28,11 @@ gulp.task('js', ['clean:js'], function() {
   // see https://wehavefaces.net/gulp-browserify-the-gulp-y-way-bb359b3f9623
   return browserify('src/scripts/main.js').bundle()
     // NOTE this error handler fills the role of plumber() when working with browserify
-    .on('error', function(e) { if (isDist) { throw e; } else { gutil.log(e.stack); this.emit("end"); } })
-    .pipe(source('build.js'))
+    .on('error', function(e) { if (isDist) { throw e; } else { gutil.log(e.stack); this.emit('end'); } })
+    .pipe(source('src/scripts/main.js'))
     .pipe(buffer())
-    .pipe(uglify())
+    .pipe(isDist ? closureCompiler({ compilation_level: 'ADVANCED', warning_level: 'QUIET', language_in: 'ES5_STRICT', language_out: 'ES5' }) : uglify())
+    .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
     .pipe(connect.reload());
 });
