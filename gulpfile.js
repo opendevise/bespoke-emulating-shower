@@ -1,5 +1,4 @@
 'use strict';
-
 var pkg = require('./package.json'),
   autoprefixer = require('gulp-autoprefixer'),
   browserify = require('browserify'),
@@ -22,6 +21,24 @@ var pkg = require('./package.json'),
   through = require('through'),
   tidy = require('tidy-html5').tidy_html5,
   uglify = require('gulp-uglify'),
+  closureCompilerOpts = {
+    compilation_level: 'ADVANCED',
+    warning_level: 'QUIET',
+    language_in: 'ES5_STRICT',
+    language_out: 'ES5'
+  },
+  tidyOpts = {
+    'coerce-endtags': 'false',
+    'drop-empty-elements': 'false',
+    'fix-uri': 'false',
+    'indent': 'false',
+    'newline': 'LF',
+    'preserve-entities': 'true',
+    'quiet': 'true',
+    'show-warnings': 'false',
+    'tidy-mark': 'false',
+    'wrap': '0'
+  },
   isDist = process.argv.indexOf('deploy') >= 0;
 
 gulp.task('js', ['clean:js'], function() {
@@ -31,7 +48,7 @@ gulp.task('js', ['clean:js'], function() {
     .on('error', function(e) { if (isDist) { throw e; } else { gutil.log(e.stack); this.emit('end'); } })
     .pipe(source('src/scripts/main.js'))
     .pipe(buffer())
-    .pipe(isDist ? closureCompiler({ compilation_level: 'ADVANCED', warning_level: 'QUIET', language_in: 'ES5_STRICT', language_out: 'ES5' }) : uglify())
+    .pipe(isDist ? closureCompiler(closureCompilerOpts) : uglify())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
     .pipe(connect.reload());
@@ -54,26 +71,13 @@ gulp.task('asciidoc-html', ['clean:asciidoc-html'], function() {
     .pipe(exec.reporter({ stdout: false }))
     .pipe(through(function(file) {
       var html = file.contents.toString();
-      // NOTE based on tidy 4.9.26
-      html = tidy(html, {
-        'coerce-endtags': false,
-        'drop-empty-elements': false,
-        'fix-uri': false,
-        'indent': false,
-        'newline': 'LF',
-        'preserve-entities': true,
-        'quiet': true,
-        'show-warnings': false, // otherwise tidy will warn about role attributes
-        'tidy-mark': false,
-        'wrap': 0
-      });
-      html = html
-        // strip extra newlines inside <pre> tags (fixed in tidy 5.1)
+      html = tidy(html, tidyOpts) // NOTE based on tidy 4.9.26
+        // strip extra newlines inside <pre> tags (fixed in tidy 5.1.2)
         .replace(new RegExp('<pre([^>]*)>\\n([\\s\\S]*?)\\n</pre>', 'g'), '<pre$1>$2</pre>\n')
-        // strip extra endline after <script> start tag
-        //.replace(new RegExp('>\\n</script>', 'g'), '></script>')
-        // add endine after script tags
-        .replace(new RegExp('</script> *<', 'g'), '</script>\n<');
+        // strip extra newline after <script> start tag for empty and single-line content
+        .replace(new RegExp('>\\n(?:(.+)\\n)?</script>', 'g'), '>$1</script>')
+        // add newline before <script> tags
+        .replace(new RegExp('><script([^>]*)>', 'g'), '>\n<script$1>');
       file.contents = new Buffer(html);
       this.push(file);
     }))
@@ -141,7 +145,5 @@ gulp.task('deploy', ['clean', 'build'], function(done) {
 });
 
 gulp.task('build', ['js', 'asciidoc-html', 'jade-html', 'css', 'images']);
-
 gulp.task('serve', ['connect', 'watch']);
-
 gulp.task('default', ['build']);
