@@ -28,10 +28,12 @@ var pkg = require('./package.json'),
     language_out: 'ES5'
   },
   tidyOpts = {
+    'anchor-as-name': 'false',
     'coerce-endtags': 'false',
     'drop-empty-elements': 'false',
     'fix-uri': 'false',
     'indent': 'false',
+    'literal-attributes': 'true',
     'newline': 'LF',
     'preserve-entities': 'true',
     'quiet': 'true',
