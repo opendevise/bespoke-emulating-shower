@@ -1,6 +1,13 @@
 {
   "name": "presentation-bespoke-emulating-shower",
   "version": "1.1.1",
+  "description": "A Bespoke.js presentation that emulates the example presentation for Shower 1.x.",
+  "author": "Dan Allen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/opendevise/bespoke-emulating-shower"
+  },
   "dependencies": {},
   "devDependencies": {
     "bespoke": "^1.1.0",
