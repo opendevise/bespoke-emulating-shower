@@ -16,6 +16,7 @@ var pkg = require('./package.json'),
   path = require('path'),
   plumber = require('gulp-plumber'), // plumber prevents pipe breaking caused by errors thrown by plugins
   rename = require('gulp-rename'),
+  replace = require('gulp-replace'),
   source = require('vinyl-source-stream'),
   stylus = require('gulp-stylus'),
   through = require('through'),
@@ -50,6 +51,8 @@ gulp.task('js', ['clean:js'], function() {
     .on('error', function(e) { if (isDist) { throw e; } else { gutil.log(e.stack); this.emit('end'); } })
     .pipe(source('src/scripts/main.js'))
     .pipe(buffer())
+    // hack to make bullets array available on deck object
+    .pipe(replace('activateBullet(0, 0);', 'deck.bullets = bullets; activateBullet(0, 0);'))
     .pipe(isDist ? closureCompiler(closureCompilerOpts) : uglify())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
