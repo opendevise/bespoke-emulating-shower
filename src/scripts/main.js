@@ -10,12 +10,12 @@ var bespoke = require('bespoke'),
   scale = require('bespoke-scale'),
   title = require('bespoke-title');
 
-// NOTE address small gap above slide in Chrome/WebKit by scaling from top of viewport
-if ('webkitAppearance' in document.documentElement.style) {
-  var style = document.createElement('style');
-  style.textContent = '.bespoke-scale-parent{transform-origin:50% 0%}\n.bespoke-slide{top:0;margin-top:0}';
-  document.head.appendChild(style); 
-}
+// NOTE address small gap above slide in Chrome/WebKit by scaling from top of viewport; only works in landscape
+//if ('webkitAppearance' in document.documentElement.style) {
+//  var style = document.createElement('style');
+//  style.textContent = '.bespoke-scale-parent{transform-origin:50% 0%}\n.bespoke-slide{top:0;margin-top:0}';
+//  document.head.appendChild(style); 
+//}
 
 bespoke.from('.deck', [
   classes(),
