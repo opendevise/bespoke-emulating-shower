@@ -2,9 +2,7 @@
 @import "normalizecss/normalize.css"
 
 *, ::before, ::after { box-sizing: inherit }
-
-html
-  box-sizing border-box
+html { box-sizing: border-box }
 
 .deck
   counter-reset slide
@@ -16,8 +14,7 @@ html
   // NOTE disable kerning to match original theme
   //font-feature-settings "kern" 1
   //text-rendering optimizeLegibility
-  &:not(.bespoke-parent), section:not(.bespoke-slide)
-    display none
+  &:not(.bespoke-parent), section:not(.bespoke-slide) { display: none }
 
 .bespoke-parent, .bespoke-scale-parent
   position absolute
@@ -217,9 +214,7 @@ html
 .bespoke-overview
   -ms-overflow-style none // hide visible scrollbar in IE 10+
   &::-webkit-scrollbar { width: 0 } // hide visible scrollbar in WebKit
-  background-color #585a5e
-  background-image url(../images/linen-2x.png)
-  background-size 256px
+  background #585a5e url(../images/linen-2x.png) 0% 0% / 256px auto
   .bespoke-slide
     box-shadow 0 0 120px rgba(0, 0, 0, 0.005), 0 80px 200px rgba(42, 43, 45, 0.6)
   .bespoke-slide:hover
