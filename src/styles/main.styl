@@ -11,8 +11,9 @@ html
   font-family "PT Sans", sans-serif
   font-size 25px
   line-height 2
-  color rgb(0, 0, 0)
-  background-color rgb(0, 0, 0)
+  color #000
+  background-color #000
+  // NOTE disable kerning to match original theme
   //font-feature-settings "kern" 1
   //text-rendering optimizeLegibility
   &:not(.bespoke-parent), section:not(.bespoke-slide)
@@ -37,7 +38,7 @@ html
 .bespoke-slide
   opacity 0 // force opacity to start at 0 to avoid transition on load when using bespoke-scale
   pointer-events none
-  background-color #ffffff
+  background-color #fff
   position absolute
   top 50%
   left 50%
@@ -63,7 +64,7 @@ html
     font-family "PT Sans Narrow", sans-serif
     font-size 2em
     line-height 1em
-    color rgb(102, 102, 102)
+    color #666
     margin 0 0 37px 0
   p, ul, ol
     margin 0 0 2em 0
@@ -74,7 +75,7 @@ html
     //font-feature-settings "kern" 1
     //text-rendering optimizeLegibility
   p.note
-    color rgb(153, 153, 153)
+    color #bbb
   blockquote
     margin 0
     font-style italic
@@ -100,7 +101,7 @@ html
       &::before
         display inline-block
         width 2em
-        color rgb(187, 187, 187)
+        color #bbb
         text-align right
   ol
     counter-reset list
@@ -186,7 +187,7 @@ html
       visibility hidden // hide the ribbon
   &.image
     h1, h2, p, a
-      color rgb(255, 255, 255)
+      color #fff
   &.title
     h1, p, a
       text-align center
@@ -207,7 +208,6 @@ html
     h2
       font-size 6em
       text-align center
-      //margin 0 120px
       margin-left 120px
       margin-right 120px
       &.fit
