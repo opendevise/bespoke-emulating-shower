@@ -11,7 +11,7 @@ html { box-sizing: border-box }
   line-height 2
   color #000
   background-color #000
-  // NOTE disable kerning to match original theme
+  // disable kerning to match original theme
   //font-feature-settings "kern" 1
   //text-rendering optimizeLegibility
   &:not(.bespoke-parent), section:not(.bespoke-slide) { display: none }
@@ -35,12 +35,12 @@ html { box-sizing: border-box }
   pointer-events none
   background-color #fff
   position absolute
-  top 50%
-  left 50%
   width 1024px
   margin-left -(@width / 2)
+  left 50%
   height 640px
   margin-top -(@height / 2)
+  top 50%
   padding 105px 120px
 
 .bespoke-active
