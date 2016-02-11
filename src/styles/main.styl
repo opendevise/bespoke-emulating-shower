@@ -24,12 +24,10 @@ html { box-sizing: border-box }
   bottom 0
 
 .bespoke-parent
-  // only put overflow on parent, not other slide wrapper elements
-  overflow hidden
-  > :not(.bespoke-slide)
-    pointer-events none
+  overflow hidden // only put overflow on parent, not other slide wrapper elements
 
 .bespoke-scale-parent
+  pointer-events none
   width 100vw // set width to 100vw to fix scrollbar calculation in Firefox
 
 .bespoke-slide
@@ -224,38 +222,36 @@ html { box-sizing: border-box }
     box-shadow 0 0 0 4px #376da3, 0 0 0 40px #4B86C2, 0 80px 200px rgba(42, 43, 45, 0.6) !important
     outline none
     border-radius 4px
-
-.bespoke-overview-counter .bespoke-slide::after
-  top 100%
-  left 10%
-  width auto
-  height auto
-  color #3c3d40
-  font-weight bold
-  text-shadow 0 2px 2px #8d8e90
-  font-size 1.6em
-  transform scale(2)
-  transform-origin top left
-  background none
-  cursor default
-  visibility visible
-  text-align left
-  counter-increment slide
-  content counter(slide)
-
-.bespoke-overview-counter .bespoke-active::after
-  color #4B86C2
-  text-shadow 0 2px 2px rgba(42, 43, 45, 0.6)
-
-.bespoke-overview .bespoke-slide, .bespoke-overview-to .bespoke-slide, .bespoke-overview-from .bespoke-slide
-  transition none
-
-.bespoke-title
-  padding 275px 300px 0
-  h1
-    font-family "PT Sans Narrow", sans-serif
-    font-size 6.5em
-    line-height 1em
-    color #3c3d40
-    text-shadow 0 0.02em 0.02em #8d8e90
-    text-align left
+  &-counter
+    .bespoke-slide::after
+      top 100%
+      left 10%
+      width auto
+      height auto
+      color #3c3d40
+      font-weight bold
+      text-shadow 0 2px 2px #8d8e90
+      font-size 1.6em
+      transform scale(2)
+      transform-origin top left
+      background none
+      cursor default
+      visibility visible
+      text-align left
+      counter-increment slide
+      content counter(slide)
+    .bespoke-active::after
+      color #4b86c2
+      text-shadow 0 2px 2px rgba(42, 43, 45, 0.6)
+  //.bespoke-slide, &-to .bespoke-slide, &-from .bespoke-slide
+  //  transition none
+  .bespoke-title
+    padding 275px 300px 0
+    pointer-events auto
+    h1
+      font-family "PT Sans Narrow", sans-serif
+      font-size 6.5em
+      line-height 1em
+      color #3c3d40
+      text-shadow 0 0.02em 0.02em #8d8e90
+      text-align left
