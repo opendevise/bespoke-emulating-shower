@@ -10,16 +10,21 @@ var bespoke = require('bespoke'),
   scale = require('bespoke-scale'),
   title = require('bespoke-title');
 
+// NOTE address small gap above slide in Chrome/WebKit by scaling from top of viewport
+if ('webkitAppearance' in document.documentElement.style) {
+  var style = document.createElement('style');
+  style.textContent = '.bespoke-scale-parent{transform-origin:50% 0%}\n.bespoke-slide{top:0;margin-top:0}';
+  document.head.appendChild(style); 
+}
+
 bespoke.from('.deck', [
   classes(),
   nav(),
   fullscreen(),
-  // NOTE zoom-based scaling produces slightly different results than scale transform
-  scale('transform'),
+  scale('transform'), // NOTE zoom-based scaling produces slightly different results than scale transform
   overview({ margin: 300, autostart: true, title: true, numbers: true }),
   bullets('.build,.build-items>*:not(.build-items)'),
-  // NOTE only works with hack to bespoke-bullets to expose bullets array
-  function(deck) {
+  function(deck) { // NOTE only works with hack to bespoke-bullets to expose bullets array
     deck.on('deactivate', function(e) {
       if (e.preview || !e.slide.classList.contains('bespoke-active') || deck.parent.classList.contains('bespoke-overview')) return;
       var bullets = deck.bullets[e.index];
