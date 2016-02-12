@@ -1,6 +1,6 @@
 {
   "name": "presentation-bespoke-emulating-shower",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Bespoke.js presentation that emulates the example presentation for Shower 1.x.",
   "author": "Dan Allen",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "bespoke-forms": "^1.0.0",
     "bespoke-fullscreen": "^1.0.0",
     "bespoke-hash": "^1.0.2",
-    "bespoke-nav": "^1.0.1",
+    "bespoke-nav": "^1.0.2",
     "bespoke-overview": "^1.0.4",
     "bespoke-scale": "^1.0.1",
     "bespoke-title": "^1.0.0",
