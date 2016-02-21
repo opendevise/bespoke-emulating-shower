@@ -17,7 +17,7 @@ var bespoke = require('bespoke'),
 //  document.head.appendChild(style); 
 //}
 
-bespoke.from('.deck', [
+(window.bespoke = bespoke).deck = bespoke.from('.deck', [
   classes(),
   nav(),
   fullscreen(),
