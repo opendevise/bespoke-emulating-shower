@@ -27,7 +27,7 @@ var bespoke = require('bespoke'),
   function(deck) { // NOTE only works with hack to bespoke-bullets to expose bullets array
     deck.on('deactivate', function(e) {
       if (e.preview || !e.slide.classList.contains('bespoke-active') || deck.parent.classList.contains('bespoke-overview')) return;
-      var bullets = deck.bullets[e.index];
+      var bullets = deck.bullets[e.index] || [];
       if (bullets.length > 0) {
         bullets.forEach(function(bullet) {
           ['bespoke-bullet',
