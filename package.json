@@ -3,6 +3,11 @@
   "version": "1.1.2",
   "description": "A Bespoke.js presentation that emulates the example presentation for Shower 1.x.",
   "author": "Dan Allen",
+  "contributors": [
+    {
+      "name": "Vadim Makeev"
+    }
+  ]
   "license": "MIT",
   "repository": {
     "type": "git",
