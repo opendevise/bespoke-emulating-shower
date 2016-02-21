@@ -1,6 +1,8 @@
 @import "./fonts.css"
 @import "normalizecss/normalize.css"
 
+$transparent = rgba(255,255,255,0) // phantomjs doesn't understand transparent keyword in gradients
+
 *, ::before, ::after { box-sizing: inherit }
 html { box-sizing: border-box }
 
@@ -113,9 +115,9 @@ html { box-sizing: border-box }
   a
     color #4b86c2
     text-decoration none
-    background linear-gradient(to top, currentColor, currentColor .09em, transparent .09em, transparent) repeat-x
+    background linear-gradient(to top, currentColor, currentColor .09em, $transparent .09em, $transparent) repeat-x
   h2 a
-    background linear-gradient(to top, currentColor, currentColor .11em, transparent .11em, transparent) repeat-x
+    background linear-gradient(to top, currentColor, currentColor .11em, $transparent .11em, $transparent) repeat-x
   pre, code
     font-family "PT Mono", monospace
   *:not(pre) > code, mark
@@ -158,7 +160,7 @@ html { box-sizing: border-box }
     th
       text-align left
     th, td
-      background linear-gradient(to top, #bbb, #bbb .055em, transparent .055em, transparent) repeat-x
+      background linear-gradient(to top, #bbb, #bbb .055em, $transparent .055em, $transparent) repeat-x
       line-height 2em
     p.tableblock
       line-height inherit
