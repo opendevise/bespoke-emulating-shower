@@ -1,0 +1,28 @@
+@page
+  size 1024px 640px
+  margin 0
+
+@media print
+  .bespoke-parent, .bespoke-scale-parent, .bespoke-slide
+    margin unset
+    position relative
+    top unset
+    right unset
+    bottom unset
+    left unset
+
+  .bespoke-parent
+    overflow visible
+
+  .bespoke-scale-parent
+    transform unset !important
+
+  .bespoke-slide
+    opacity unset
+    zoom unset !important
+
+  .bespoke-bullet-inactive
+    opacity unset
+
+  .bespoke-title
+    display none

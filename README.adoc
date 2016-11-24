@@ -48,3 +48,7 @@ You can launch the preview server using:
  $ gulp serve
 
 Once the server is running, you can view the slides by navigating to \http://localhost:8000 in your browser.
+
+=== Printing to PDF (Chrome)
+
+See the https://github.com/shower/shower/blob/master/docs/printing-en.md[printing] page of the Shower docs.
