@@ -1,6 +1,5 @@
-/.ruby-version
-/Gemfile.lock
-/asciidoctor-bespoke
+/.bundle/gems/
 /dist/
 /node_modules/
-/rubygems/
+/.ruby-version
+/Gemfile.lock
